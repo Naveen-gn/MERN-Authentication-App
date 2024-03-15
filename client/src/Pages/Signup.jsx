@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link,useNavigate } from 'react-router-dom'
 
 export default function Signup() {
+  const baseUrl="http://localhost:3000/";
   const [formData, setFormData] = useState({});
   const [errorMessage, setErrorMessage] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -18,7 +19,7 @@ export default function Signup() {
     try {
       setLoading(true);
       setErrorMessage(null);
-      const res=await fetch('https://naveen-mern-blog-app-server.vercel.app/api/auth/signup',{
+      const res=await fetch(`${baseUrl}api/auth/signup`,{
         method:'POST',
         headers:{
           'Content-Type':'application/json'
@@ -27,8 +28,8 @@ export default function Signup() {
       });
       const data=await res.json()
       console.log(data);
-      if (data.success===false) {
-        setLoading(false);
+      if (data.sucess===false) {
+      setLoading(false);
        return setErrorMessage("Username or Email already exists! Please try again.");
        
       }
@@ -37,8 +38,8 @@ export default function Signup() {
       }
     } 
     catch (error) {
-      setErrorMessage(error.message || "Something went wrong! Please try again.");
       setLoading(false);
+      setErrorMessage(error.message || "Something went wrong! Please try again.");
     }
   };
   return (
