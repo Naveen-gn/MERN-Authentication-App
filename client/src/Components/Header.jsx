@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 export default function Header() {
   return (
     <div className='bg-slate-200'>
-        <div className="flex justify-between max-w-6xl items-center  mx-auto ">
+        <div className="flex justify-between max-w-6xl items-center  mx-auto p-3">
             <h1 className='font-bold'>Auth App</h1>
-            <ul className='flex gap-4'>
+            <ul className='flex gap-8'>
                 <Link to='/'>
                     <li>Home</li>
                 </Link>
