@@ -10,7 +10,6 @@ export default function Signup() {
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value.trim() });     
   };
-  console.log(formData);
   const handleSubmit=async(e)=>{
     e.preventDefault()
     if (!formData.username || !formData.email || !formData.password) {
@@ -27,7 +26,6 @@ export default function Signup() {
         body:JSON.stringify(formData)
       });
       const data=await res.json()
-      console.log(data);
       if (data.sucess===false) {
       setLoading(false);
        return setErrorMessage("Username or Email already exists! Please try again.");
@@ -65,7 +63,7 @@ export default function Signup() {
         </Link>
       </div>
       {
-            errorMessage && <h3 className='mt-5 text-red-700 text-lg'>
+            errorMessage && <h3 className='mt-5 text-red-700 text-lg text-center'>
               {errorMessage}
             </h3>
           }
